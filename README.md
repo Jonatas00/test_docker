@@ -11,7 +11,7 @@ docker-compose up --build
 ## Running the app
 
 ```bash
-go mod download
+go mod tidy
 ```
 ```bash
 go run ./main.go
