@@ -1,6 +1,7 @@
 package main
 
 import (
+	"test_docker/internal/config"
 	"test_docker/internal/database"
 	"test_docker/internal/routes"
 
@@ -8,9 +9,12 @@ import (
 )
 
 func main() {
+	config.LoadEnv()
+
 	router := gin.New()
+
 	database.Connect()
 	routes.UserRoute(router)
 
-	router.Run()
+	router.Run(":" + config.APP_PORT)
 }
