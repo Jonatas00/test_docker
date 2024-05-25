@@ -1,6 +1,16 @@
 services:
-  db:
-    container_name: database
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    depends_on:
+      - database
+    ports:
+      - "8080:8080"
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
+  database:
     image: postgres
     env_file:
       - .env
@@ -12,6 +22,8 @@ services:
       POSTGRES_DB: ${DB_NAME}
     volumes:
       - polls_pg_data:/var/lib/postgresql/data
+    extra_hosts:
+      - host.docker.internal:host-gateway
 
 volumes:
   polls_pg_data:
