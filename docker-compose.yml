@@ -1,3 +1,6 @@
+networks:
+  wire: {}
+
 services:
   app:
     build:
@@ -7,6 +10,8 @@ services:
       - database
     ports:
       - "8080:8080"
+    networks:
+      - wire
     extra_hosts:
       - host.docker.internal:host-gateway
 
@@ -22,6 +27,8 @@ services:
       POSTGRES_DB: ${DB_NAME}
     volumes:
       - polls_pg_data:/var/lib/postgresql/data
+    networks:
+      - wire
     extra_hosts:
       - host.docker.internal:host-gateway
 
