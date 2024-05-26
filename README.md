@@ -5,9 +5,9 @@ A basic CRUD application to test Docker container creation.
 ## Running the app
 
 ```bash
-docker compose build --no-cache
+docker compose build
 ```
 
 ```bash
-docker compose up -d
+docker compose up
 ```
