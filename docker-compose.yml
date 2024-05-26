@@ -5,7 +5,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     depends_on:
       - database
     ports:
