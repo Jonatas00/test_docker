@@ -1,3 +1,6 @@
+networks:
+  network: {}
+
 services:
   app:
     build:
@@ -7,6 +10,8 @@ services:
       - database
     ports:
       - "8080:8080"
+    networks:
+      - network
 
   database:
     image: postgres
@@ -20,6 +25,8 @@ services:
       POSTGRES_DB: ${DB_NAME}
     volumes:
       - polls_pg_data:/var/lib/postgresql/data
+    networks:
+      - network
 
 volumes:
   polls_pg_data:
